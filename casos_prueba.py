@@ -2,9 +2,13 @@ import numpy as np
 import os
 
 def generar_caso(n, nombre_archivo):
-    """Genera matriz n×n con números de 6+ dígitos y la guarda."""
+    """
+    Genera una matriz cuadrada n×n con números enteros de 6 dígitos
+    (entre 100.000 y 999.999) y la guarda en disco como archivo .npy.
+    Si el archivo ya existe, no lo sobreescribe (persistencia).
+    """
     if not os.path.exists(nombre_archivo):
-        matriz = np.random.randint(100000, 999999, size=(n, n))
+        matriz = np.random.randint(100_000, 999_999, size=(n, n))
         np.save(nombre_archivo, matriz)
         print(f"  Caso guardado: {nombre_archivo} ({n}x{n})")
     else:
